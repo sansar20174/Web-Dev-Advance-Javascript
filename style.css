@@ -5,3 +5,12 @@
     height: 40px;
     border: 1px solid white;
 }
+li{
+    background-color: lightgray;
+    width: 300px;
+    margin: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+}

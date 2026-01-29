@@ -10,7 +10,6 @@
 //const btn = document.querySelector(".btn");
 //btn.classList.add("btn");
 
-// debugger
 // console.log(a)
 // //console.log(b) 
 
@@ -39,10 +38,50 @@
 // let a = 10
 // let b = 20
 
-let total = 345
+// let total = 345
 
-function calculate(){
-    console.log(total)
-    let total = 567
+// function calculate(){
+//     console.log(total)
+//     let total = 567
+// }
+// calculate()
+
+// console.log("First Line")
+// setTimeout(()=>console.log("Inside setTimeout"),0)
+// console.log("Last Line")
+
+// const studentsnames=document.querySelector("#Name");
+// const button=document.querySelector(".btn");
+// const list=document.querySelector(".list");
+
+// button.addEventListener("click",()=>{
+    
+//     // create li element
+//     const li= document.createElement("li")
+//     const deleteButton=document.createElement("button")
+//     //provide text to li element
+//     li.innerText=studentsnames.value
+//     deleteButton.innerText="Delete"
+
+//     deleteButton.addEventListener("click",()=>{
+//         list.removeChild(li)
+//         //li.remove() // another way to delete element
+//     })
+
+//     li.appendChild(deleteButton)
+//     list.appendChild(li)
+//     studentsnames.value=""
+// })
+
+function print(){   //callback function
+    console.log("Print Function Called")
 }
-calculate()
+
+function greet(print){   // higher order function
+    setTimeout(() => {
+    console.log("Hello, welcome to the JavaScript world!")
+    print()
+    }, 2000)
+}
+
+greet(print);

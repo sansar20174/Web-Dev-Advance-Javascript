@@ -73,15 +73,64 @@
 //     studentsnames.value=""
 // })
 
-function print(){   //callback function
-    console.log("Print Function Called")
-}
+// function print(){   //callback function
+//     console.log("Print Function Called")
+// }
 
-function greet(print){   // higher order function
+// function greet(print){   // higher order function
+//     setTimeout(() => {
+//     console.log("Hello, welcome to the JavaScript world!")
+//     print()
+//     }, 2000)
+// }
+
+// greet(print);
+
+// function finishhomework(callback){
+//     console.log("Starting Homeworks")        // Callback Hell example
+//     setTimeout(() => {
+//     console.log("Homework done")
+//     callback()
+//     }, 2000);
+// }
+
+// function eatdinner(callback){
+//     console.log("Starting Dinner")
+//     setTimeout(() => {
+//         console.log("Dinner done")
+//         callback()
+//     }, 2000);
+// }
+
+// function watchtv(){
+//     console.log("Starting TV time");
+//     setTimeout(() => {
+//         console.log("TV time done")
+//     }, 2000);   
+// }
+
+// // chained callbacks in stepwise manner
+// finishhomework(()=>{
+//     eatdinner(()=>{
+//         watchtv()
+//     })
+// });
+
+const p = new Promise((resolve, reject) => {
+    console.log("Going to do the homework");
+
     setTimeout(() => {
-    console.log("Hello, welcome to the JavaScript world!")
-    print()
-    }, 2000)
-}
+        const done = true;
+        if (done) {
+            resolve("Homework is done");
+        } else {
+            reject("Homework is not done");
+        }
+    }, 3000);
+});
 
-greet(print);
+p.then((message) => {               //then allows us to handle resolved promise
+    console.log( message);
+}).catch((error) => {               //catch allows us to handle rejected promise
+    console.log( error);
+});

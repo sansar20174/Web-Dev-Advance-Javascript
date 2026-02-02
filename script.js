@@ -116,21 +116,90 @@
 //     })
 // });
 
-const p = new Promise((resolve, reject) => {
-    console.log("Going to do the homework");
+// const p = new Promise((resolve, reject) => {
+//     console.log("Going to do the homework");
 
-    setTimeout(() => {
-        const done = true;
-        if (done) {
-            resolve("Homework is done");
-        } else {
-            reject("Homework is not done");
-        }
-    }, 3000);
-});
+//     setTimeout(() => {
+//         const done = true;
+//         if (done) {
+//             resolve("Homework is done");
+//         } else {
+//             reject("Homework is not done");
+//         }
+//     }, 3000);
+// });
 
-p.then((message) => {               //then allows us to handle resolved promise
-    console.log( message);
-}).catch((error) => {               //catch allows us to handle rejected promise
-    console.log( error);
-});
+// p.then((message) => {               //then allows us to handle resolved promise
+//     console.log( message);
+// }).catch((error) => {               //catch allows us to handle rejected promise
+//     console.log( error);
+// }).finally(() => {                     //finally allows us to execute code after promise is settled
+//     console.log("Promise is settled");
+// });
+
+function finishhomework(){
+    const p= new Promise((resolve,reject)=>{
+        setTimeout(() => {
+            let done=true
+            if(done){
+                console.log("Homework is done")
+                resolve("Homework is done")
+            }
+            else{
+                reject("Homework is not done")
+            }
+        }, 2000);
+    })
+    return p
+}
+
+function eatdinner(){
+    const p=new Promise((resolve,reject)=>{
+        setTimeout(() => {
+            let done=true
+            if(done){
+                console.log("Dinner is done")
+                resolve("Dinner is done")
+            }
+            else{
+                reject("Dinner is not done")
+            }
+        }, 2000);
+    })
+    return p
+}
+
+function gotoplayground(){
+    const p=new Promise((resolve,reject)=>{
+        setTimeout(() => {
+            let done=true
+            if(done){
+                console.log("Playground time is done")
+                resolve("Playground time is done")
+            }
+            else{
+                reject("Playground time is not done")
+            }
+        }, 2000);
+    })
+    return p
+}
+
+// chaining promises
+finishhomework()
+.then((message)=>{
+    console.log(message)
+    return eatdinner()
+})
+.then((message)=>{
+    console.log(message)
+    return gotoplayground()
+})
+.then((message)=>{       // each then handles resolved promise
+    console.log(message)
+})
+.catch((error)=>{       // catch handles any rejection in the chain
+    console.log(error)
+}).finally(()=>{        // finally runs after all promises are settled and if any rejection occurs then finally runs after catch
+    console.log("All tasks are done")
+})

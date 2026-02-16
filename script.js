@@ -312,32 +312,32 @@
 //               Promise Resolved
 //               Inside setTimeout, because microtasks (promises) have higher priority than macrotasks (setTimeout).
 
-function orderfood(){
-    return new Promise((resolve, reject)=>{
-        setTimeout(() => {
-            console.log("Food Ordered")
-            resolve()
-        }, 2000);
-    })
-}
+// function orderfood(){
+//     return new Promise((resolve, reject)=>{
+//         setTimeout(() => {
+//             console.log("Food Ordered")
+//             resolve()
+//         }, 2000);
+//     })
+// }
 
-function cookfood(){
-    return new Promise((resolve, reject)=>{
-        setTimeout(() => {
-            console.log("Food Cooked")
-            resolve()
-        }, 3000);
-    })
-}
+// function cookfood(){
+//     return new Promise((resolve, reject)=>{
+//         setTimeout(() => {
+//             console.log("Food Cooked")
+//             resolve()
+//         }, 3000);
+//     })
+// }
 
-function eatfood(){
-    return new Promise((resolve, reject)=>{
-        setTimeout(() => {
-            console.log("Food Eaten")
-            resolve()
-        }, 1000);
-    })
-}
+// function eatfood(){
+//     return new Promise((resolve, reject)=>{
+//         setTimeout(() => {
+//             console.log("Food Eaten")
+//             resolve()
+//         }, 1000);
+//     })
+// }
 
 // orderfood().then(()=>{
 //     return cookfood()
@@ -347,11 +347,73 @@ function eatfood(){
 //     console.log("All done")
 // })
 
-async function processfood(){
-    await orderfood()
-    await cookfood()
-    await eatfood()
-    console.log("All done")
-}
+// async function processfood(){
+//     await orderfood()
+//     await cookfood()
+//     await eatfood()
+//     console.log("All done")
+// }
 
-processfood()
+// processfood()
+
+// console.log("Its the first line")
+// try{
+//     let age=19;
+//     if(age<18){
+//         throw new Error("Not allowed to vote")
+//     }
+//     let sample;
+//     for(let i =0;i<10;i++){
+//         sample=i
+//     }
+
+// }
+// catch(error){
+//     console.log(error)
+//     throw new Error("Please check the age ")
+// }finally{
+//     console.log("This will always execute")
+
+// }
+// console.log("Its the last line")
+
+// async function getData(){
+//     try{
+//         const response = await fetch("https://dummyjson.com/products");
+//         const data = await response.json();
+//         console.log(response.ok);
+//         if (!response.ok) {
+//             throw new Error("Something Went Wrong");
+//         }
+//         data.products.forEach(product => {
+//             console.log(product.title);
+//         });
+//     }catch(err){
+//         console.log(err);
+//     }
+// }
+// getData();
+
+async function getData(){
+    try{
+        const response=await fetch("https://jsonplaceholder.typicode.com/posts", {
+        method:"POST",
+        headers:{
+            "Content-Type":"application/json"
+        },
+        body:JSON.stringify({
+            title:"foo",
+            body:"bar",
+            userId:1
+        })   
+    })
+    if(!response.ok){
+        throw new Error("Failed to create post")
+    }
+    const data=await response.json()
+    console.log(data)
+    }catch(err){
+        console.log(err)
+    }
+}
+getData()

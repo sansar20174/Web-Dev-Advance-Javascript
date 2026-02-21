@@ -394,26 +394,74 @@
 // }
 // getData();
 
-async function getData(){
-    try{
-        const response=await fetch("https://jsonplaceholder.typicode.com/posts", {
-        method:"POST",
-        headers:{
-            "Content-Type":"application/json"
-        },
-        body:JSON.stringify({
-            title:"foo",
-            body:"bar",
-            userId:1
-        })   
-    })
-    if(!response.ok){
-        throw new Error("Failed to create post")
-    }
-    const data=await response.json()
-    console.log(data)
-    }catch(err){
-        console.log(err)
-    }
+// async function getData(){
+//     try{
+//         const response=await fetch("https://jsonplaceholder.typicode.com/posts", {
+//         method:"POST",
+//         headers:{
+//             "Content-Type":"application/json"
+//         },
+//         body:JSON.stringify({
+//             title:"BMW Car",
+//             body:"This is a post about BMW cars.",
+//             description:"BMW is a German multinational company which produces luxury vehicles and motorcycles.",
+//             price:50000,
+//             discountPercentage:10,
+//             rating:4.5,
+//             stock:100,
+//         })   
+//     }) 
+//     if(!response.ok){
+//         throw new Error("Failed to create post")
+//     }
+//     const data=await response.json()   
+//     console.log(data)
+//     }catch(err){
+//         console.log(err)
+//     }
+// }
+// getData()
+
+// fetch syntax for POST request with async/await. We specify the method as POST, set the appropriate headers, and 
+// include the body of the request as a JSON string. We also check if the response is successful and handle any errors 
+// that may occur during the fetch operation.
+
+// Storage: 
+// 1. Local Storage: Stores data with no expiration date. Data persists even after the browser is closed.
+
+// let object={
+//     name:"John",
+//     age:30,
+// }
+// localStorage.setItem("object",JSON.stringify(object)) // we need to stringify the object before storing it in localStorage
+
+// localStorage.getItem("name", "John") // to retrieve the value of name from localStorage, we can use getItem method. 
+// // It will return the value as a string.
+// localStorage.getItem("age","30") 
+
+// console.log(localStorage.getItem("name"))
+// console.log(localStorage.getItem("age"))
+
+// console.log(JSON.parse(localStorage.getItem("object"))) // to retrieve the object from localStorage, 
+// // we need to parse it back to an object using JSON.parse() method.
+// localStorage.removeItem("name") // to remove an item from localStorage, we can use removeItem method.
+
+// Session Storage: Stores data for the duration of the page session. Data is cleared when the page session ends
+//  (e.g., when the browser tab is closed).
+
+// sessionStorage.setItem("name","Alice") 
+// sessionStorage.setItem("age","25")
+
+// console.log(sessionStorage.getItem("name"))
+// console.log(sessionStorage.getItem("age"))
+
+// sessionStorage.removeItem("name")
+
+// Cookies: Small pieces of data stored in the browser. They have an expiration date and are sent to the server with every request.
+document.cookie="name=Bob; expires=Fri, 31 Dec 2026 23:59:59 UTC;"
+document.cookie="age=35; expires=Fri, 31 Dec 2026 23:59:59 UTC;"
+
+async function sample(){
+    await fetch("https://jsonplaceholder.typicode.com/posts")
 }
-getData()
+sample()

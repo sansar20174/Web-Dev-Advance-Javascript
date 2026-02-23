@@ -458,10 +458,10 @@
 // sessionStorage.removeItem("name")
 
 // Cookies: Small pieces of data stored in the browser. They have an expiration date and are sent to the server with every request.
-document.cookie="name=Bob; expires=Fri, 31 Dec 2026 23:59:59 UTC;"
-document.cookie="age=35; expires=Fri, 31 Dec 2026 23:59:59 UTC;"
+// document.cookie="name=Bob; expires=Fri, 31 Dec 2026 23:59:59 UTC;"
+// document.cookie="age=35; expires=Fri, 31 Dec 2026 23:59:59 UTC;"
 
-async function sample(){
-    await fetch("https://jsonplaceholder.typicode.com/posts")
-}
-sample()
+// async function sample(){
+//     await fetch("https://jsonplaceholder.typicode.com/posts")
+// }
+// sample()
